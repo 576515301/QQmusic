@@ -19,7 +19,11 @@
 	export default {
 		data(){
 			return {
-				nav:["推荐","排行榜","搜索"]
+				nav:[
+					{name:"推荐",path:"/recommend"},
+					{name:"排行榜",path:"/home"},
+					{name:"搜索",path:"/home"},
+				]
 			}
 		},
 		components:{

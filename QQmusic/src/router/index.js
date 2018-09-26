@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home'
+import Recommend from '@/components/recommend'
 
 Vue.use(Router)
 
@@ -12,8 +13,17 @@ export default new Router({
     },
     {
       path: '/home',
+      redirect:"/recommend",
       name: 'Home',
-      component: Home
-    }
+      component: Home,
+      children:[
+        {
+          path: '/recommend',
+          name: 'Recommend',
+          component: Recommend
+        }
+      ]
+    },
+
   ]
 })
