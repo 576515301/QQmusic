@@ -5,11 +5,16 @@
 				class="bannerItem"
 				:class="{befor:beforBanner==index,now:nowBanner==index,after:afterBanner==index}"
 				v-for="(v,index) in banner"
-				:style="{left:0,zIndex:index}"
+				@touchstart="touchBanner($event,index)"
+				@touchmove="touchBanner($event,index)"
+				@touchend="touchBanner($event,index)"
 			>
 				<img :src="v.picUrl">
 			</li>
 		</ul>
+		<ol class="pieBox">
+			<li class="pieItem" v-for="(v,index) in banner" :class="{active:nowBanner==index}"></li>
+		</ol>
 		<img v-cloak class="bgImg" :src="bannerBox[0].picUrl">
 	</div>
 </template>
@@ -19,15 +24,15 @@
 		props:["banner"],
 		data(){
 			return {
-				bannerBox:[{}],
-				bannerClass:{},
-				beforBanner:null,
-				nowBanner:null,
-				afterBanner:null,
-				timer:null,
+				bannerBox:[{}],         // banner数据的集合
+				beforBanner:null,       // 上一张banner的索引
+				nowBanner:null,			// 当前banner的索引
+				afterBanner:null,		// 下一张banner的索引
+				timer:null,				// banner轮播定时器
 			}
 		},
 		methods:{
+			// banner轮播函数
 			bannerMove(){
 				this.timer = setInterval(()=>{
 					if(this.nowBanner == this.bannerBox.length - 1){
@@ -36,6 +41,23 @@
 						this.nowBanner++
 					}
 				},2000);
+			},
+			// banner拖动函数
+			touchBanner(e,index){
+				var type = e.type;
+				switch(type){
+					case "touchstart":
+						clearInterval(this.timer);
+						break;
+					case "touchmove":
+						break;
+					case "touchend":
+						this.bannerMove();
+						break
+					default:
+						break;
+				}
+				
 			}
 		},
 		watch:{
@@ -49,7 +71,6 @@
 			},
 			nowBanner(n,o){
 				var item = document.querySelectorAll(".bannerItem");
-				console.log(item);
 				if(n == 0){
 					this.beforBanner = this.bannerBox.length - 1;
 					this.afterBanner = n + 1;
@@ -68,6 +89,7 @@
 <style lang="less" scoped>
 	#banner{
 		overflow:hidden;
+		position:relative;
 		&>img.bgImg{
 			width:100%;
 			visibility: hidden;
@@ -96,6 +118,26 @@
 				img{
 					width:100%;
 					display: block;
+				}
+			}
+		}
+		.pieBox{
+			position: absolute;
+			width:100%;
+			bottom:5px;
+			left:0;
+			overflow:hidden;
+			text-align: center;
+			z-index: 10;
+			.pieItem{
+				display: inline-block;
+				margin:0 4px;
+				width:6px;
+				height:6px;
+				border-radius: 50%;
+				background: rgba(144,144,144,.8);
+				&.active{
+					background:#fff;
 				}
 			}
 		}

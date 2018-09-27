@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/home'
-import Recommend from '@/components/recommend'
+import Home from '@/pages/home'
+import Recommend from '@/pages/recommend'
 
 Vue.use(Router)
 
