@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/home'
 import Recommend from '@/pages/recommend'
+import Rank from '@/pages/rank'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
           path: '/recommend',
           name: 'Recommend',
           component: Recommend
+        },
+        {
+          path: '/rank',
+          name: 'Rank',
+          component: Rank
         }
       ]
     },

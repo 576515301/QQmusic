@@ -7,6 +7,8 @@ import router from './router'
 import '@/assets/css/reset.css'
 import jsonP from'@/assets/js/jsonP.js'
 
+import store from '@/store'
+
 
 Vue.config.productionTip = false
 Vue.prototype.$jsonP     = jsonP;
@@ -15,6 +17,7 @@ Vue.prototype.$http      = Axios;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>'

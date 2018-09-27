@@ -3,8 +3,8 @@
 		<ul>
 			<li 
 				v-for="(v,index) in nav"
-				@click="toPath(v.name,v.path,index)" 
-				:class="{active:v.name==nowTab}"
+				@click="toPath(v.path,index)" 
+				:class="{active:v.path==nowTab}"
 			>
 			{{v.name}}
 			</li>
@@ -22,25 +22,39 @@
 				{name:"推荐",path:"/recommend"}
 			]
 		 */
-		props:["nav"],
+		props:{
+			nav:Array
+		},
 		data(){
 			return {
-				nowTab:this.nav[0].name,
+				nowTab:null,
 			}
 		},
 		methods:{
-			toPath(name,path,index){
+			toPath(path,index){
 				var hk = this.$refs.hk;
 				var l = index / this.nav.length;
-				this.nowTab = name;
 				hk.style.left = l*100 + "%";
+				this.nowTab = path;
 				this.$router.push(path);
 			}
+		},
+		created(){
+			var href = window.location.href;
+				this.nowTab = href.split("#")[1];
+
 		},
 		mounted(){
 			var hk = this.$refs.hk;
 			var w = 1 / this.nav.length;
 			hk.style.width = w*100+"%";
+			var index = 0;
+			for(var i = 0; i < this.nav.length; i++){
+				if(this.nowTab == this.nav[i].path){
+					index = i;
+				}
+			}
+			this.toPath(this.nowTab,index);
 		},
 	}
 </script>
@@ -51,6 +65,7 @@
 		ul{
 			height:40px;
 			display: flex;
+			background:#fff;
 			li{
 				flex:1;
 				text-align: center;

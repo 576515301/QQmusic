@@ -19,4 +19,7 @@ export default {
 [v-cloak]{
 	display: none;
 }
+body{
+	background: #f4f4f4;
+}
 </style>
