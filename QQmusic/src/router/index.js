@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/pages/home'
 import Recommend from '@/pages/recommend'
 import Rank from '@/pages/rank'
+import Search from '@/pages/search'
+
 
 Vue.use(Router)
 
@@ -27,6 +29,11 @@ export default new Router({
           path: '/rank',
           name: 'Rank',
           component: Rank
+        },
+        {
+          path: '/search',
+          name: 'Search',
+          component: Search
         }
       ]
     },
