@@ -23,7 +23,7 @@
 		methods:{
 			getDataFun(){
 				var time = new Date().getTime();
-				var url = "https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&uin=0&format=json&jsonpCallback=jsonp1&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_="+time;
+				var url = "https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg?g_tk=5381&uin=0&format=jsonp&jsonpCallback=jsonp1&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_="+time;
 
 				if(!this.allData){
 					this.$jsonP(url,"jsonp1",(res)=>{

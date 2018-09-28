@@ -79,7 +79,7 @@
 			bannerMove(){
 				this.timer = setInterval(()=>{
 					this.pgUp();
-				},2000);
+				},4000);
 			},
 			// banner拖动函数
 			touchBanner(e,path){
