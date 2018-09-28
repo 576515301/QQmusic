@@ -39,6 +39,18 @@
 				this.$router.push(path);
 			}
 		},
+		watch:{
+			$route(to,from){
+				for(var i = 0; i < this.nav.length; i++){
+					if(this.nav[i].path == to.path){
+						var hk = this.$refs.hk;
+						var l = i / this.nav.length;
+						hk.style.left = l*100 + "%";
+						this.nowTab = to.path;
+					}
+				}
+			}
+		},
 		created(){
 			var href = window.location.href;
 				this.nowTab = href.split("#")[1];

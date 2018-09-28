@@ -10,6 +10,12 @@ import jsonP from'@/assets/js/jsonP.js'
 import store from '@/store'
 
 
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload,{
+  loading:require('@/assets/img/default_pic.jpg') 
+});
+
 Vue.config.productionTip = false
 Vue.prototype.$jsonP     = jsonP;
 Vue.prototype.$http      = Axios;

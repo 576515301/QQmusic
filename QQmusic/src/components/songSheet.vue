@@ -8,7 +8,7 @@
 				<li class="item" v-for="(v,index) in sheetData">
 					<div class="bigBox">
 						<div class="imgBox">
-							<img :src="v.picUrl">
+							<img v-lazy="v.picUrl">
 							<span class="playIcon"></span>
 							<span class="accessnum" v-if="v.accessnum">
 								<i class="headset"></i>
