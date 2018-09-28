@@ -20,6 +20,7 @@
 				<span class="jtIcon"></span>
 			</li>
 		</ul>
+		<img class="loading" v-if="!rankData" src="@/assets/img/loading.gif">
 	</div>
 </template>
 
@@ -58,6 +59,13 @@
 	#rankBox{
 		width:100%;
 		height:100%;
+		.loading{
+			position: fixed;
+			top:50%;
+			left:50%;
+			margin-top:-75px;
+			margin-left:-75px;
+		}
 		.rankList{
 			width:100%;
 			height:100%;
